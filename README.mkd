@@ -51,4 +51,8 @@ line interface.
 
 ## TODO
 
+* wget envy: make local filename optional
+* support absolute and relative local filenames from CLI
 * test proxy impl
+* test with JRuby on Windows and Arch
+* test on FreeBSD 9.0
