@@ -1,0 +1,54 @@
+## What?
+
+A minimalistic, pure-Ruby HTTP/HTTPS/FTP file downloader library with a command
+line interface.
+
+## Usage
+
+    HTTP/HTTPS/FTP File Downloader, v0.1.0
+    Usage: nabit URL FILE
+
+      URL   http/https/ftp location of the file to download
+      FILE  full local path at which to save downloaded file
+
+
+    influential environment variables:
+
+      HTTP_PROXY    url to http proxy
+      CA_CERT_FILE  full path to CA certificate file
+
+### CLI Usage Examples
+
+    nabit http://sqlite.org/sqlite-autoconf-3071100.tar.gz c:\temp\sqlite-latest.tar.gz
+
+    nabit ftp://sourceware.org/pub/libffi/libffi-3.0.10.tar.gz "$HOME/downloads/libffi-3.0.10.tar.gz"
+
+    set CA_CERT_FILE=c:\tools\cacert.pem
+    nabit https://github.com/downloads/thecodeshop/ruby/w32time.7z c:/temp/w32time.7z
+
+### Library Usage Example
+
+    require 'rubygems'  # only for Ruby < 1.9
+    require 'nabit'
+
+    ENV['CA_CERT_FILE'] ||= '/etc/ssl/certs/ca-certificates.crt
+    target = File.expand_path('~/downloads/secret-codes-20120327.tar.xz')
+    source = 'https://unbreakable.area51.io/secret-codes.tar.xz'
+
+    nab = Nabit::Downloader.new
+    nab.download_file(source, target)
+
+### Local Build and Install
+
+    git clone https://github.com/jonforums/nabit.git
+    cd nabit
+    rake package
+    gem install pkg/nabit-X.Y.Z.gem [--user-install]
+
+## License
+
+3-clause BSD. Portions from MiniPortile's HTTP implementation. See project LICENSE file.
+
+## TODO
+
+* test proxy impl
