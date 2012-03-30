@@ -13,11 +13,11 @@ module Nabit
     def initialize
       @logger = STDOUT.binmode
       @max_ca_verify_depth = 5
-      @ftp_data_chunk_size = 16384
+      @ftp_data_chunk_size = 32768
     end
 
     def download_file(url, full_path, count = 3)
-      return if File.exist?(full_path)
+      return if File.exists?(full_path)
 
       uri = URI.parse(url)
       case uri.scheme.downcase
@@ -25,6 +25,8 @@ module Nabit
         ftp_download(uri, full_path)
       when /http|https/
         http_download(url, full_path, count)
+      else
+        raise "\nERROR: Unknown URI scheme '#{uri.scheme}'"
       end
     end
 
