@@ -1,6 +1,40 @@
 #!/usr/bin/env ruby
+require 'nabit/version'
+
+module Nabit
+
+  def self.usage
+    <<-EOU
+
+HTTP/HTTPS/FTP File Downloader, v#{Nabit::VERSION}
+Usage: nabit URL [FILE]
+
+  URL   http/https/ftp location of the file to download
+  FILE  local path at which to save downloaded file
+
+
+influential environment variables:
+
+  HTTP_PROXY    url to http proxy
+  CA_CERT_FILE  full path to CA certificate file
+
+    EOU
+  end
+
+  class Runner
+    def self.run(args, options = {})
+      # XXX dodgy `File.basename` on URI for default filename, do post `URI.parse`?
+      file_name = args[1] ? File.expand_path(args[1]) :
+                            File.expand_path(File.basename(args[0]))
+
+      Nabit::Downloader.new.download_file(args[0], file_name)
+    end
+  end
+
+end
+
+_args = ARGV.dup
+abort Nabit.usage unless (1..2).include?(_args.length)
+
 require 'nabit'
-
-abort Nabit.usage if ARGV.length != 2
-
-Nabit::Downloader.new.download_file(ARGV[0], ARGV[1])
+Nabit::Runner.run(_args)

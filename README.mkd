@@ -5,11 +5,11 @@ line interface.
 
 ## Usage
 
-    HTTP/HTTPS/FTP File Downloader, v0.1.0
-    Usage: nabit URL FILE
+    HTTP/HTTPS/FTP File Downloader, v0.2.0
+    Usage: nabit URL [FILE]
 
       URL   http/https/ftp location of the file to download
-      FILE  full local path at which to save downloaded file
+      FILE  local path at which to save downloaded file
 
 
     influential environment variables:
@@ -18,6 +18,9 @@ line interface.
       CA_CERT_FILE  full path to CA certificate file
 
 ### CLI Usage Examples
+
+    cd %USERPROFILE%\Downloads
+    nabit http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
 
     nabit http://sqlite.org/sqlite-autoconf-3071100.tar.gz c:\temp\sqlite-latest.tar.gz
 
@@ -51,8 +54,8 @@ line interface.
 
 ## TODO
 
-* wget envy: make local filename optional
-* support absolute and relative local filenames from CLI
+* investigate low-level, cross-platform socket tweaks
+* add user/pw FTP support
 * test proxy impl
 * test with JRuby on Windows and Arch
 * test on FreeBSD 9.0
