@@ -58,4 +58,3 @@ line interface.
 * add user/pw FTP support
 * test proxy impl
 * test with JRuby on Windows and Arch
-* test on FreeBSD 9.0
