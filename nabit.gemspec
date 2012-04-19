@@ -16,7 +16,8 @@ with a sparse CLI.
   s.author = 'Jon Maken'
   s.email = 'jon.forums@gmail.com'
 
-  s.files = FileList["lib/**/*.rb", "Rakefile", "nabit.gemspec", "LICENSE", "README.mkd"]
+  s.files = FileList["lib/**/*.rb"]
+  s.files += [ "Rakefile", "nabit.gemspec", "LICENSE", "README.mkd", "HISTORY.mkd" ]
   s.executable = 'nabit'
 
   s.required_ruby_version = ">= 1.8.7"
