@@ -1,0 +1,8 @@
+### 0.2.0 (2012-03-30)
+
+* refactor and code clean
+* increase default FTP data chunk size to 32768
+
+### 0.1.0 (2012-03-29)
+
+* initial implementation
