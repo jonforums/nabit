@@ -45,7 +45,7 @@ line interface.
 
     git clone https://github.com/jonforums/nabit.git
     cd nabit
-    rake package
+    rake
     gem install pkg/nabit-X.Y.Z.gem [--user-install]
 
 ## License
